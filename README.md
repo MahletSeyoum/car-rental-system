@@ -6,3 +6,4 @@ this project needs use case
 project needs user story
 and then we start doing write codes
 then we do something
+requirements
