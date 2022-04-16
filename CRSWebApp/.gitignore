@@ -1,0 +1,33 @@
+CRSWebApp/HELP.md
+CRSWebApp/target/
+!CRSWebApp/.mvn/wrapper/maven-wrapper.jar
+!CRSWebApp/**/src/main/**/target/
+!CRSWebApp/**/src/test/**/target/
+
+### STS ###
+CRSWebApp/.apt_generated
+CRSWebApp/.classpath
+CRSWebApp/.factorypath
+CRSWebApp/.project
+CRSWebApp/.settings
+CRSWebApp/.springBeans
+CRSWebApp/.sts4-cache
+
+### IntelliJ IDEA ###
+CRSWebApp/.idea
+CRSWebApp/*.iws
+CRSWebApp/*.iml
+CRSWebApp/*.ipr
+
+### NetBeans ###
+CRSWebApp/nbproject/private/
+CRSWebApp/nbbuild/
+CRSWebApp/dist/
+CRSWebApp/nbdist/
+CRSWebApp/.nb-gradle/
+CRSWebApp/build/
+!CRSWebApp/**/src/main/**/build/
+!CRSWebApp/**/src/test/**/build/
+
+### VS Code ###
+CRSWebApp/.vscode/
