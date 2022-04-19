@@ -1,6 +1,9 @@
-package com.example.carrental.model;
+package edu.mum.crswebapp.model;
 
-public class Address {
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+@Embeddable
+public class Address implements ValueObject {
     private String state;
     private String city;
     private String street;
