@@ -1,10 +1,9 @@
 package edu.mum.crswebapp.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Employees")
@@ -15,15 +14,15 @@ public class Employee {
     private Long employeeId;
 
     @Column(nullable = false)
-    @NotBlank(message = "First name is required")
+    @NotBlank(message = "Full name is required")
     private String fullName;
-
-
-    @Email
-    private String email;
+    @NotNull
+    @Column(nullable = false)
     private String phoneNumber;
-
-
+     @Email
+    private String email;
+    @Embedded
+     private Address address;
     public Employee() {
     }
 
@@ -33,7 +32,6 @@ public class Employee {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
-
 
     public Long getEmployeeId() {
         return employeeId;
