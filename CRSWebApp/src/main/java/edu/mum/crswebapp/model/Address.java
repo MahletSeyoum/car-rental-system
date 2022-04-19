@@ -1,7 +1,8 @@
 package edu.mum.crswebapp.model;
 
-
-
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+@Embeddable
 public class Address implements ValueObject {
     private String state;
     private String city;
