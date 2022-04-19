@@ -32,6 +32,10 @@ import javax.validation.constraints.NotBlank;
     @NotBlank(message = "year of Manufacture can not be empty")
     private String yearOfManufacture;
 
+    @OneToOne
+    @JoinColumn(name = "vehicleType_fk", nullable = false)
+    private VehicleType vehicleType;
+
     public Vehicle() {
     }
 
