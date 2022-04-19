@@ -1,6 +1,8 @@
-package com.example.carrental.model;
+package edu.mum.crswebapp.model;
 
-public class Address {
+
+
+public class Address implements ValueObject {
     private String state;
     private String city;
     private String street;
