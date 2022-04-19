@@ -1,14 +1,34 @@
-package edu.mum.crswebapp.model;
+package com.example.carrental.model;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
-@Entity
-@Table(name = "customers")
 public class Customer {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customerId;
-    private String firstName;
-    private String lastName;
+    @NotBlank
+    @NotNull
+    @Column(nullable = false)
+    private String fullName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate DateOfBirth;
+    @Column(nullable = false)
+    private String driversLicenseNumber;
+    @Email
+    private String email;
+
+
+    @JsonBackReference
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY)
+    Order order;
+    @Embedded
+    private Address address;
 }
