@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(path = {"crs","crs/public"})
+@RequestMapping(path = {"/","crs","crs/public"})
 public class HomePageController {
 
     @GetMapping(path = {"/","/home"})
