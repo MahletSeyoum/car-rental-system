@@ -53,11 +53,6 @@ public class Address implements ValueObject {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                '}';
+        return state + ", " +city + " " +street + ' ' +zipCode + ' ';
     }
 }
