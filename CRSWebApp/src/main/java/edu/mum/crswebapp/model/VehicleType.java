@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
   private Long vehicleId;
   @Column(nullable = false)
   @NotBlank(message = "name can not be empty")
-  private String Name;
+  private String name;
   @Column(nullable = false)
   @NotBlank(message = "price can not be empty")
   private Double price;
@@ -25,7 +25,7 @@ import javax.validation.constraints.NotBlank;
 
   public VehicleType(Long vehicleId, String name, Double price, int numberOfSeats) {
     this.vehicleId = vehicleId;
-    Name = name;
+    this.name = name;
     this.price = price;
     this.numberOfSeats = numberOfSeats;
   }
@@ -35,7 +35,7 @@ import javax.validation.constraints.NotBlank;
   }
 
   public String getName() {
-    return Name;
+    return name;
   }
 
   public Double getPrice() {
@@ -51,7 +51,7 @@ import javax.validation.constraints.NotBlank;
   }
 
   public void setName(String name) {
-    Name = name;
+    this.name = name;
   }
 
   public void setPrice(Double price) {
