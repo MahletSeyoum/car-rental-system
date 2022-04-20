@@ -22,17 +22,9 @@ public class VehicleController {
         this.vehicleService=vehicleService;
     }
 
-//    @GetMapping(path = "/")
-//    public List<String> getVehicles() {
-//        List<String> list = new ArrayList<String>();
-//        list.add("Vehicle1");
-//        list.add("Vehicle2");
-//        return list;
-//    }
     @GetMapping(value = {"/list"})
     public ModelAndView listVehicles(){
         var modelAndView = new ModelAndView();
-//        var vehicles = vehicleService.getAllVehicles();
         modelAndView.addObject("vehicles", vehicleService.getAllVehicles());
         modelAndView.setViewName("secured/vehicle/vehicles");
         return modelAndView;
@@ -77,10 +69,10 @@ public class VehicleController {
         vehicleService.addVehicles(vehicle);
         return "redirect:/crs/vehicle/list";
     }
-//
-//    @GetMapping(value = {"/delete/{vehicleId}"})
-//    public String deletePublisher(@PathVariable Long vehicleId) {
-//        vehicleService.deletePublisherById(vehicleId);
-//        return "redirect:/crs/vehicle/list";
-//    }
+
+    @GetMapping(value = {"/delete/{vehicleId}"})
+    public String deletePublisher(@PathVariable Long vehicleId) {
+        vehicleService.deletePublisherById(vehicleId);
+        return "redirect:/vehicle/list";
+    }
 }
