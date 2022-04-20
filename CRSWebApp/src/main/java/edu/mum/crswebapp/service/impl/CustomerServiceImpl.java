@@ -3,6 +3,7 @@ package edu.mum.crswebapp.service.impl;
 import edu.mum.crswebapp.model.Customer;
 import edu.mum.crswebapp.repository.CustomerRepository;
 import edu.mum.crswebapp.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +11,9 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    @Autowired
     private CustomerRepository customerRepository;
 
-    CustomerServiceImpl(CustomerRepository customerRepository){
-        this.customerRepository = customerRepository;
-    }
 
     @Override
     public List<Customer> getAllCustomers() {
@@ -23,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getCustomer(Integer customerId) {
-        return customerRepository.findById(customerId).orElse(null);
+        return null;
     }
 
     @Override

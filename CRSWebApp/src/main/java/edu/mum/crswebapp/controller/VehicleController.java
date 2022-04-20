@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = {"crs/vehicle","/vehicle"})
+@RequestMapping(path = {"crs/secured/vehicle"})
 public class VehicleController {
 
     @Autowired
@@ -51,7 +51,7 @@ public class VehicleController {
             return "/secured/vehicle/new";
         }
         vehicleService.addVehicles(vehicle);
-        return "redirect:/vehicle/list";
+        return "redirect:/crs/secured/vehicle/list";
     }
 
     @GetMapping(value = {"/edit/{vehicleId}"})
@@ -61,7 +61,7 @@ public class VehicleController {
             model.addAttribute("vehicle", vehicle);
             return "secured/vehicle/edit";
         }
-        return "redirect:/vehicle/list";
+        return "redirect:/crs/secured/vehicle/list";
     }
 
     @PostMapping(value = {"/update"})
@@ -73,7 +73,7 @@ public class VehicleController {
             return "secured/vehicle/edit";
         }
         vehicleService.addVehicles(vehicle);
-        return "redirect:/crs/vehicle/list";
+        return "redirect:/crs/secured/vehicle/list";
     }
 //
 //    @GetMapping(value = {"/delete/{vehicleId}"})

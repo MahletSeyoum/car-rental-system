@@ -2,7 +2,6 @@ package edu.mum.crswebapp.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "customers")
@@ -26,6 +25,9 @@ public class Customer {
 //    private LocalDate dateOfBirth;
 
     private String email;
+
+    @Embedded
+    private Address address;
 
     public Customer() {
     }
@@ -85,7 +87,6 @@ public class Customer {
 //    public void setDateOfBirth(LocalDate dateOfBirth) {
 //        this.dateOfBirth = dateOfBirth;
 //    }
-
     public String getEmail() {
         return email;
     }
