@@ -1,4 +1,4 @@
-package edu.mum.crswebapp.service.impl;
+package edu.mum.crswebapp.service.Impl;
 
 import edu.mum.crswebapp.model.Vehicle;
 import edu.mum.crswebapp.repository.VehicleRepository;
