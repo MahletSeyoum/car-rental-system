@@ -1,7 +1,9 @@
 package edu.mum.crswebapp.controller;
 
 import edu.mum.crswebapp.model.Vehicle;
+import edu.mum.crswebapp.model.VehicleType;
 import edu.mum.crswebapp.service.VehicleService;
+import edu.mum.crswebapp.service.VehicleTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,9 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
+    @Autowired
+    private VehicleTypeService vehicleTypeService;
+
     @GetMapping(value = {"/list"})
     public ModelAndView listVehicles(){
         var modelAndView = new ModelAndView();
@@ -38,7 +43,9 @@ public class VehicleController {
 
     @GetMapping(value = {"/new"})
     public String displayNewVehicleForm(Model model) {
+        List<VehicleType> vehicleTypes = vehicleTypeService.getVehicleTypes();
         model.addAttribute("vehicle", new Vehicle(null,null, null, null,null,null,null,null,null));
+        model.addAttribute("vehicleTypes", vehicleTypes);
         return "secured/vehicle/new";
     }
 
@@ -57,8 +64,10 @@ public class VehicleController {
     @GetMapping(value = {"/edit/{vehicleId}"})
     public String editVehicle(@PathVariable Long vehicleId, Model model) {
         var vehicle = vehicleService.getVehicleById(vehicleId);
+        List<VehicleType> vehicleTypes = vehicleTypeService.getVehicleTypes();
         if (vehicle != null) {
             model.addAttribute("vehicle", vehicle);
+            model.addAttribute("vehicleTypes", vehicleTypes);
             return "secured/vehicle/edit";
         }
         return "redirect:/crs/secured/vehicle/list";
