@@ -23,14 +23,24 @@ public class Employee {
     private String email;
     @Embedded
      private Address address;
+
     public Employee() {
     }
 
-    public Employee(Long employeeId, String fullName, String email, String phoneNumber) {
+    public Employee(Long employeeId, String fullName, String phoneNumber, String email, Address address) {
         this.employeeId = employeeId;
         this.fullName = fullName;
-        this.email = email;
         this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public Long getEmployeeId() {

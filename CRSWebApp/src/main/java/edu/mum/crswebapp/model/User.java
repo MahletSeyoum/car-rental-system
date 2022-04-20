@@ -1,8 +1,8 @@
 package edu.mum.crswebapp.model;
 
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.AuthorityUtils;
-//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -13,8 +13,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-//public class User implements UserDetails {
-public class User{
+public class User implements UserDetails {
+//public class User{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
@@ -78,32 +79,32 @@ public class User{
         this.username = username;
     }
 
-//    @Override
+    @Override
     public boolean isAccountNonExpired() {
         return this.accountNonExpired;
     }
 
-//    @Override
+    @Override
     public boolean isAccountNonLocked() {
         return this.accountNonLocked;
     }
 
-//    @Override
+    @Override
     public boolean isCredentialsNonExpired() {
         return this.credentialsNonExpired;
     }
 
-//    @Override
+    @Override
     public boolean isEnabled() {
         return this.enabled;
     }
 
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        String[] userRoles = getRoles().stream().map((role) -> role.getName()).toArray(String[]::new);
-//        Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
-//        return authorities;
-//    }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        String[] userRoles = getRoles().stream().map((role) -> role.getName()).toArray(String[]::new);
+        Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
+        return authorities;
+    }
 
     public String getPassword() {
         return password;

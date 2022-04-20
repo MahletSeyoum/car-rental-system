@@ -61,4 +61,7 @@ import javax.validation.constraints.NotBlank;
   public void setNumberOfSeats(int numberOfSeats) {
     this.numberOfSeats = numberOfSeats;
   }
+
+
+
 }

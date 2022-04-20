@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <style>
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid #d5d5d5;
+        }
+        td, th {
+            border: 1px solid #d5d5d5;
+            padding: 2em;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+
+
+    </nav>
+</header>
+<h1>List of Employee</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+
+        <th> Full Name </th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+        <th>Address</th>
+
+
+
+
+
+
+<!--        this.fullName = fullName;-->
+<!--        this.phoneNumber = phoneNumber;-->
+<!--        this.email = email;-->
+<!--        this.address = address;-->
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee,counter : ${employee}">
+        <th scope="row" th:text="${counter.count}+${'.'}"></th>
+        <td th:text="${employee.fullName}"></td>
+        <td th:text="${employee.phoneNumber}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.address}"></td>
+
+        <td>
+        <th> <a th:href="@{'/employee/edit/{employeeId}'(employeeId=${employee.employeeId})}">
+            <i class="fa-regular fa-pen-to-square"></i> Edit
+        </a>
+        </th>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
