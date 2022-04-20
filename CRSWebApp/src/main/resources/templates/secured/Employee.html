@@ -61,7 +61,12 @@
         </th>
         </td>
 
-
+        <td>
+        <th> <a th:href="@{'/employee/delete/{employeeId}'(employeeId=${employee.employeeId})}">
+            <i class="fa-regular fa-pen-to-square"></i> Delete
+        </a>
+        </th>
+        </td>
     </tr>
     </tbody>
 </table>

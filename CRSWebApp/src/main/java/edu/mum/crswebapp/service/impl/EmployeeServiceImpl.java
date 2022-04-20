@@ -36,12 +36,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(employeeId);
 
     }
-    @Override
-    public Employee updateEmployee(Employee employee) {
-        return null;
-    }
+
     @Override
     public List<Employee> view() {
         return null;
     }
+
+    @Override
+    public Employee updateEmployee(Employee employee) {
+        return null;
+    }
+
 }
