@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
     @Entity
     @Table(name = "Vehicles")
     public class Vehicle {
+
     @Id
     @Column(name = "vehicle_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +26,16 @@ import javax.validation.constraints.NotBlank;
     @Column(nullable = false)
     @NotBlank(message = "color can not be empty")
     private String color;
-    @Column(nullable = false)
-    @NotBlank(message = "quantity can not be empty")
+//    @Column(nullable = false)
+//    @NotBlank(message = "quantity can not be empty")
     private Integer quantity;
     @Column(nullable = false)
     @NotBlank(message = "year of Manufacture can not be empty")
     private String yearOfManufacture;
+
+//    @OneToOne
+//    @JoinColumn(name = "vehicleType_fk", nullable = false)
+//    private VehicleType vehicleType;
 
     public Vehicle() {
     }

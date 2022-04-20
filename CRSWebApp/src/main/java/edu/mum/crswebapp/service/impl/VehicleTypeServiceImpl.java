@@ -5,6 +5,10 @@ import edu.mum.crswebapp.repository.VehicleTypeRepository;
 import edu.mum.crswebapp.service.VehicleTypeService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 
 import javax.persistence.Entity;
 import java.util.List;
