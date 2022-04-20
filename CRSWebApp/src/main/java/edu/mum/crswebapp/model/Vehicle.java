@@ -3,9 +3,9 @@ package edu.mum.crswebapp.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-    @Entity
-    @Table(name = "Vehicles")
-    public class Vehicle {
+@Entity
+@Table(name = "Vehicles")
+public class Vehicle {
     @Id
     @Column(name = "vehicle_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
     @Column(nullable = false, unique = true)
     @NotBlank(message = "vinNumber can not be empty")
     private String vinNumber;
+    private String vehicleImage;
     @Column(nullable = false, unique = true)
     @NotBlank(message = "plateNumber can not be empty")
     private String plateNumber;
@@ -25,23 +26,24 @@ import javax.validation.constraints.NotBlank;
     @Column(nullable = false)
     @NotBlank(message = "color can not be empty")
     private String color;
-    @Column(nullable = false)
-    @NotBlank(message = "quantity can not be empty")
+//    @Column(nullable = false)
+//    @NotBlank(message = "quantity can not be empty")
     private Integer quantity;
     @Column(nullable = false)
     @NotBlank(message = "year of Manufacture can not be empty")
     private String yearOfManufacture;
 
-    @OneToOne
-    @JoinColumn(name = "vehicleType_fk", nullable = false)
-    private VehicleType vehicleType;
+//    @OneToOne
+//    @JoinColumn(name = "vehicleType_fk", nullable = false)
+//    private VehicleType vehicleType;
 
     public Vehicle() {
     }
 
-    public Vehicle(Long vehicleId, String vinNumber, String plateNumber, String brand, String model, String color, Integer quantity, String yearOfManufacture) {
+    public Vehicle(Long vehicleId, String vinNumber, String vehicleImage, String plateNumber, String brand, String model, String color, Integer quantity, String yearOfManufacture) {
         this.vehicleId = vehicleId;
         this.vinNumber = vinNumber;
+        this.vehicleImage = vehicleImage;
         this.plateNumber = plateNumber;
         this.brand = brand;
         this.model = model;
@@ -112,5 +114,13 @@ import javax.validation.constraints.NotBlank;
 
     public void setYearOfManufacture(String yearOfManufacture) {
         this.yearOfManufacture = yearOfManufacture;
+    }
+
+    public String getVehicleImage() {
+        return vehicleImage;
+    }
+
+    public void setVehicleImage(String vehicleImage) {
+        this.vehicleImage = vehicleImage;
     }
 }
