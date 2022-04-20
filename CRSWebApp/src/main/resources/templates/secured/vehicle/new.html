@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Order</a>
+                        <a class="nav-link active" aria-current="page" href="/crs/secured/order/list">Order</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/crs/secured/employee/list">Employee</a>
@@ -40,7 +40,8 @@
 
 
 <div id="mainContainer" class="container">
-    <h3>New Vehicle  Form</h3>
+    <br>
+    <h3>New Vehicle Form</h3>
     <hr/>
 
     <div style="font-size: 1em">
@@ -110,13 +111,36 @@
                             </div>
                             <br>
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="color">*Vehicle Color:</label>
-                                    <input id="color" name="color" type="text" class="form-control"
-                                           th:value="${vehicle.color}"  autofocus>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="color">*Vehicle Color:</label>
+                                        <input id="color" name="color" type="text" class="form-control"
+                                               th:value="${vehicle.color}"  autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="color">Paste Vehicle Image Url: </label>
+                                        <input id="vehicleImage" name="vehicleImage" type="text" class="form-control"
+                                               th:value="${vehicle.vehicleImage}"  autofocus>
+                                    </div>
+<!--                                    <img th:src="${vehicle.vehicleImage}" height="150px" width="200px">-->
                                 </div>
                             </div>
+
+                            <hr>
+                            <div class="col-md-4">
+                                <legend>Vehicle Type</legend>
+                                <select class="form-control" name="vehicleType" th:field="*{vehicleType}">
+                                    <option value="0">choose one</option>
+                                    <option th:each="vehicleType : ${vehicleTypes}" th:value="${vehicleType.vehicleTypeId}" th:text="${vehicleType.vehicleTypeName}"></option>
+                                </select>
+                            </div>
+
+                            <br>
+                            <hr>
 
                         </div>
                     </div>
