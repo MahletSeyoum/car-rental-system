@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<!--<head th:replace="public/fragments/head-elements :: headElements"></head>-->
+<title>CRSWebApp - VehicleType</title>
+</head>
+<body>
+<!--<div th:replace="public/fragments/header :: header"></div>-->
+<div id="mainContainer" class="container">
+    <h3>Edit VehicleType  Form</h3>
+    <hr/>
+    <div style="font-size: 1em">
+        <div><span><b>Note:</b> Form fields marked with asterisk (*) are required.</span></div>
+        <!-- new publisher form-->
+        <form id="vehicletypeForm" method="post" action="/vehicletype/update" th:object="${vehicleType}">
+            <fieldset>
+                <!--                    <legend>New Employee Form</legend>-->
+                <div class="container" style="margin-top: 1em;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" name="vehicleTypeId" th:value="${vehicleType.vehicleTypeId}" />
+
+                            <div class="form-group">
+                                <label for="vehicleTypeName">*Vehicle TypeName:</label>
+                                <input id="vehicleTypeName" name="vehicleTypeName" type="text" class="form-control"
+                                       th:value="${vehicleType.vehicleTypeName}" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">*Vehicle Price:</label>
+                                <input id="price" name="price" type="text" class="form-control"
+                                       th:value="${vehicleType.price}"  autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="numberOfSeats">*Vehicle NumberOfSeats:</label>
+                                <input id="numberOfSeats" name="numberOfSeats" type="text" class="form-control"
+                                       th:value="${vehicleType.numberOfSeats}"  autofocus>
+                            </div>
+<!--                            <div class="form-group">-->
+<!--                                <label for="model">*Vehicle Model:</label>-->
+<!--                                <input id="model" name="model" type="text" class="form-control"-->
+<!--                                       th:value="${vehicle.model}"  autofocus>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="quantity">*Vehicle Quantity:</label>-->
+<!--                                <input id="quantity" name="quantity" type="text" class="form-control"-->
+<!--                                       th:value="${vehicle.quantity}"  autofocus>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="yearOfManufacture">*Vehicle Year of Manufacture:</label>-->
+<!--                                <input id="yearOfManufacture" name="yearOfManufacture" type="text" class="form-control"-->
+<!--                                       th:value="${vehicle.yearOfManufacture}"  autofocus>-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="color">*Vehicle Color:</label>-->
+<!--                                <input id="color" name="color" type="text" class="form-control"-->
+<!--                                       th:value="${vehicle.color}"  autofocus>-->
+<!--                            </div>-->
+
+                        </div>
+                    </div>
+
+                    <div style="padding-top: .75em;">
+                        <div>
+                            <div style="float:right;">
+                                <button id="btnReset" type="reset" class="btn btn-outline-info" style="margin-right: 2em;">Reset</button>
+                                <a href="/vehicle/list" class="btn btn-outline-warning" style="margin-right: 2em;">Cancel</a>
+                                <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Update Vehicle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<!--<div th:replace="public/fragments/footer :: footer"></div>-->
+</body>
+</html>

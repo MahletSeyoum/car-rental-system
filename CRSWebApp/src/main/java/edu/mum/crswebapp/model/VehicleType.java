@@ -2,40 +2,41 @@ package edu.mum.crswebapp.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-  @Entity
+@Entity
   @Table(name = "vehicletypes")
   public class VehicleType {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long vehicleId;
+  private Long vehicleTypeId;
   @Column(nullable = false)
   @NotBlank(message = "name can not be empty")
-  private String Name;
+  private String vehicleTypeName;
   @Column(nullable = false)
-  @NotBlank(message = "price can not be empty")
+  @NotNull(message = "price can not be empty")
   private Double price;
   @Column(nullable = false)
-  @NotBlank(message = "number of seats can not be empty")
+  @NotNull(message = "number of seats can not be empty")
   private int numberOfSeats;
 
   public VehicleType() {
   }
 
-  public VehicleType(Long vehicleId, String name, Double price, int numberOfSeats) {
-    this.vehicleId = vehicleId;
-    Name = name;
+  public VehicleType(Long vehicleTypeId, String vehicleTypeName, Double price, int numberOfSeats) {
+    this.vehicleTypeId = vehicleTypeId;
+    this.vehicleTypeName = vehicleTypeName;
     this.price = price;
     this.numberOfSeats = numberOfSeats;
   }
 
-  public Long getVehicleId() {
-    return vehicleId;
+  public Long getVehicleTypeId() {
+    return vehicleTypeId;
   }
 
-  public String getName() {
-    return Name;
+  public String getVehicleTypeName() {
+    return vehicleTypeName;
   }
 
   public Double getPrice() {
@@ -46,12 +47,12 @@ import javax.validation.constraints.NotBlank;
     return numberOfSeats;
   }
 
-  public void setVehicleId(Long vehicleId) {
-    this.vehicleId = vehicleId;
+  public void setVehicleTypeId(Long vehicleTypeId) {
+    this.vehicleTypeId = vehicleTypeId;
   }
 
-  public void setName(String name) {
-    Name = name;
+  public void setVehicleTypeName(String vehicleTypeName) {
+    this.vehicleTypeName = vehicleTypeName;
   }
 
   public void setPrice(Double price) {
@@ -60,5 +61,15 @@ import javax.validation.constraints.NotBlank;
 
   public void setNumberOfSeats(int numberOfSeats) {
     this.numberOfSeats = numberOfSeats;
+  }
+
+  @Override
+  public String toString() {
+    return "VehicleType{" +
+            "vehicleTypeId=" + vehicleTypeId +
+            ", vehicleTypeName='" + vehicleTypeName + '\'' +
+            ", price=" + price +
+            ", numberOfSeats=" + numberOfSeats +
+            '}';
   }
 }
