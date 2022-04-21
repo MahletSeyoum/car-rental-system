@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://172.19.140.16:8088/")
+//@CrossOrigin(origins = "http://172.19.140.16:8088/")
 @RestController
 @RequestMapping(path = "crs/api/v1/customer")
 public class CustomerRController {
@@ -31,7 +31,7 @@ public class CustomerRController {
         Customer customer = customerService.getCustomer(Integer.parseInt(customerId));
 
         if(customer == null){
-            return new ResponseEntity<String>("No Customer Found!", HttpStatus.OK);
+            return new ResponseEntity<String>("No Customer Found!", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
@@ -41,5 +41,15 @@ public class CustomerRController {
         System.out.println(customer);
         Customer customer1 = customerService.createCustomer(customer);
         return new ResponseEntity<Customer>(customer1, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/login")
+    public ResponseEntity<?> customerLogin(@RequestBody Customer customer){
+        System.out.println(customer);
+        Customer customer1 = customerService.loginCustomer(customer);
+        if(customer != null){
+            return new ResponseEntity<Customer>(customer1, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(customer1, HttpStatus.NOT_FOUND);
     }
 }

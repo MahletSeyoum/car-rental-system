@@ -144,4 +144,20 @@ public class Vehicle {
     public void setVehicleType(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "vehicleId=" + vehicleId +
+                ", vinNumber='" + vinNumber + '\'' +
+                ", vehicleImage='" + vehicleImage + '\'' +
+                ", plateNumber='" + plateNumber + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", quantity=" + quantity +
+                ", yearOfManufacture='" + yearOfManufacture + '\'' +
+                ", vehicleType=" + vehicleType +
+                '}';
+    }
 }
