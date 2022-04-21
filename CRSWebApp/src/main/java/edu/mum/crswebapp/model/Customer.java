@@ -17,12 +17,9 @@ public class Customer {
     @NotBlank(message = "License Number can not be Empty!")
     @Column(nullable = false)
     private String drivingLicenseNumber;
-
     @NotBlank(message = "Phone Number can not Empty!")
     @Column(nullable = false)
     private String phoneNumber;
-
-//    private LocalDate dateOfBirth;
 
     private String email;
 
@@ -32,20 +29,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer customerId, String fullName, String drivingLicenseNumber, String phoneNumber, String email) {
+    public Customer(Integer customerId, String fullName, String drivingLicenseNumber, String phoneNumber, String email, Address address) {
         this.customerId = customerId;
         this.fullName = fullName;
         this.drivingLicenseNumber = drivingLicenseNumber;
         this.phoneNumber = phoneNumber;
-//        this.dateOfBirth = dateOfBirth;
         this.email = email;
-    }
-
-    public Customer(String fullName, String drivingLicenseNumber, String phoneNumber, String email) {
-        this.fullName = fullName;
-        this.drivingLicenseNumber = drivingLicenseNumber;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.address = address;
     }
 
     public Integer getCustomerId() {
@@ -80,19 +70,20 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-//    public LocalDate getDateOfBirth() {
-//        return dateOfBirth;
-//    }
-//
-//    public void setDateOfBirth(LocalDate dateOfBirth) {
-//        this.dateOfBirth = dateOfBirth;
-//    }
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
@@ -102,8 +93,8 @@ public class Customer {
                 ", fullName='" + fullName + '\'' +
                 ", drivingLicenseNumber='" + drivingLicenseNumber + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-//                ", dateOfBirth=" + dateOfBirth +
                 ", email='" + email + '\'' +
+                ", address=" + address +
                 '}';
     }
 }

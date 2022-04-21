@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>CRSWebApp - Employee</title>
@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Order</a>
+                        <a class="nav-link" aria-current="page" href="/crs/secured/order/list">Order</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/crs/secured/employee/list">Employee</a>
@@ -41,10 +41,18 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/crs/secured/vehicletype/list">Vehicle Type</a>
                     </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/crs/secured/customer/list">Customer</a>
+                    </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <form class="d-flex">
+                        <span sec:authorize="isAnonymous()">Welcome, Guest</span>
+                        <span sec:authorize="isAuthenticated()">Welcome, </span> <span sec:authorize="isAuthenticated()" sec:authentication="principal.username"></span>
+                        <a sec:authorize="isAnonymous()"  class="btn btn-outline-success" href="/crs/public/login"> Sign In</a>
+
+                        <a sec:authorize="isAuthenticated()" class="form-control me-2" href="/crs/public/logout"> Sign out</a>
+                    </form>
                 </form>
             </div>
         </div>
@@ -87,6 +95,10 @@
                 <a th:href="@{'/crs/secured/employee/edit/{employeeId}'(employeeId=${employee.employeeId})}">
                     <button type="button" class="btn btn-primary">Edit</button>
                 </a>
+            </th>
+            <th> <a th:href="@{'/crs/secured/employee/delete/{employeeId}'(employeeId=${employee.employeeId})}">
+                <i class="fa-regular fa-pen-to-square"></i> Delete
+            </a>
             </th>
             </td>
 

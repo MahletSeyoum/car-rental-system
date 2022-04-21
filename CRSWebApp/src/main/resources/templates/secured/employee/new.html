@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Order</a>
+                        <a class="nav-link" aria-current="page" href="/crs/secured/order/list">Order</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/crs/secured/employee/list">Employee</a>
@@ -28,10 +28,18 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/crs/secured/vehicletype/list">Vehicle Type</a>
                     </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/crs/secured/customer/list">Customer</a>
+                    </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <form class="d-flex">
+                        <span sec:authorize="isAnonymous()">Welcome, Guest</span>
+                        <span sec:authorize="isAuthenticated()">Welcome, </span> <span sec:authorize="isAuthenticated()" sec:authentication="principal.username"></span>
+                        <a sec:authorize="isAnonymous()"  class="btn btn-outline-success" href="/crs/public/login"> Sign In</a>
+
+                        <a sec:authorize="isAuthenticated()" class="form-control me-2" href="/crs/public/logout"> Sign out</a>
+                    </form>
                 </form>
             </div>
         </div>
@@ -55,13 +63,24 @@
                         <div class="col-md-12">
                             <input type="hidden" name="employeeId" th:value="${employee.employeeId}" />
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fullName">*Employee FullName:</label>
-                                    <input id="fullName" name="fullName" type="text" class="form-control"
-                                           th:value="${employee.fullName}" autofocus>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fullName">*Employee FullName:</label>
+                                        <input id="fullName" name="fullName" type="text" class="form-control"
+                                               th:value="${employee.fullName}" autofocus>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fullName">Employee Email:</label>
+                                        <input id="email" name="email" type="text" class="form-control"
+                                               th:value="${employee.email}" autofocus>
+                                    </div>
                                 </div>
                             </div>
+
                             <br>
                             <div class="col-md-4">
                                 <div class="form-group">

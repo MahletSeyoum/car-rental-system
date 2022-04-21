@@ -33,9 +33,9 @@ public class Vehicle {
     @NotBlank(message = "year of Manufacture can not be empty")
     private String yearOfManufacture;
 
-//    @OneToOne
-//    @JoinColumn(name = "vehicleType_fk", nullable = false)
-//    private VehicleType vehicleType;
+    @OneToOne
+    @JoinColumn(name = "vehicleType_fk", nullable = false)
+    private VehicleType vehicleType;
 
     public Vehicle() {
     }
@@ -50,6 +50,19 @@ public class Vehicle {
         this.color = color;
         this.quantity = quantity;
         this.yearOfManufacture = yearOfManufacture;
+    }
+
+    public Vehicle(Long vehicleId, String vinNumber, String vehicleImage, String plateNumber, String brand, String model, String color, Integer quantity, String yearOfManufacture, VehicleType vehicleType) {
+        this.vehicleId = vehicleId;
+        this.vinNumber = vinNumber;
+        this.vehicleImage = vehicleImage;
+        this.plateNumber = plateNumber;
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+        this.quantity = quantity;
+        this.yearOfManufacture = yearOfManufacture;
+        this.vehicleType = vehicleType;
     }
 
     public Long getVehicleId() {
@@ -122,5 +135,29 @@ public class Vehicle {
 
     public void setVehicleImage(String vehicleImage) {
         this.vehicleImage = vehicleImage;
+    }
+
+    public VehicleType getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(VehicleType vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "vehicleId=" + vehicleId +
+                ", vinNumber='" + vinNumber + '\'' +
+                ", vehicleImage='" + vehicleImage + '\'' +
+                ", plateNumber='" + plateNumber + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", quantity=" + quantity +
+                ", yearOfManufacture='" + yearOfManufacture + '\'' +
+                ", vehicleType=" + vehicleType +
+                '}';
     }
 }
