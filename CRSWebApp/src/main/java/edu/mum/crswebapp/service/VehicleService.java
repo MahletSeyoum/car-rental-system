@@ -1,12 +1,13 @@
 package edu.mum.crswebapp.service;
 
+
 import edu.mum.crswebapp.model.Vehicle;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 public interface VehicleService {
 
+    public abstract List<Vehicle> getAllVehicle();
     public abstract List<Vehicle> getAllVehicles();
 
     public abstract Vehicle getVehicleById(Long vehicleId);

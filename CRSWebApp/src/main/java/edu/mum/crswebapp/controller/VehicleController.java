@@ -1,7 +1,17 @@
 package edu.mum.crswebapp.controller;
 
 import edu.mum.crswebapp.model.Vehicle;
+import edu.mum.crswebapp.model.VehicleType;
 import edu.mum.crswebapp.service.VehicleService;
+import edu.mum.crswebapp.service.VehicleTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,14 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = {"crs/vehicle","/vehicle"})
+@RequestMapping(path = {"crs/secured/vehicle"})
 public class VehicleController {
 
+    @Autowired
     private VehicleService vehicleService;
 
-    public VehicleController(VehicleService vehicleService){
-        this.vehicleService=vehicleService;
-    }
+    @Autowired
+    private VehicleTypeService vehicleTypeService;
 
     @GetMapping(value = {"/list"})
     public ModelAndView listVehicles(){
@@ -32,7 +42,9 @@ public class VehicleController {
 
     @GetMapping(value = {"/new"})
     public String displayNewVehicleForm(Model model) {
-        model.addAttribute("vehicle", new Vehicle(null, null, null,null,null,null,null,null));
+        List<VehicleType> vehicleTypes = vehicleTypeService.getVehicleTypes();
+        model.addAttribute("vehicle", new Vehicle(null,null, null, null,null,null,null,null,null));
+        model.addAttribute("vehicleTypes", vehicleTypes);
         return "secured/vehicle/new";
     }
 
@@ -45,17 +57,19 @@ public class VehicleController {
             return "/secured/vehicle/new";
         }
         vehicleService.addVehicles(vehicle);
-        return "redirect:/vehicle/list";
+        return "redirect:/crs/secured/vehicle/list";
     }
 
     @GetMapping(value = {"/edit/{vehicleId}"})
     public String editVehicle(@PathVariable Long vehicleId, Model model) {
         var vehicle = vehicleService.getVehicleById(vehicleId);
+        List<VehicleType> vehicleTypes = vehicleTypeService.getVehicleTypes();
         if (vehicle != null) {
             model.addAttribute("vehicle", vehicle);
+            model.addAttribute("vehicleTypes", vehicleTypes);
             return "secured/vehicle/edit";
         }
-        return "redirect:/vehicle/list";
+        return "redirect:/crs/secured/vehicle/list";
     }
 
     @PostMapping(value = {"/update"})
@@ -67,7 +81,7 @@ public class VehicleController {
             return "secured/vehicle/edit";
         }
         vehicleService.addVehicles(vehicle);
-        return "redirect:/crs/vehicle/list";
+        return "redirect:/crs/secured/vehicle/list";
     }
 
     @GetMapping(value = {"/delete/{vehicleId}"})

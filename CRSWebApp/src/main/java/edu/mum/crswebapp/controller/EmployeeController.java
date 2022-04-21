@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = {"/employee"})
+@RequestMapping(value = {"crs/secured/employee"})
 public class EmployeeController {
 
     @Autowired
@@ -27,14 +27,14 @@ public class EmployeeController {
     public ModelAndView listEmployee() {
         var modelAndView = new ModelAndView();
         modelAndView.addObject("employee", employeeService.getAllEmployees());
-        modelAndView.setViewName("/secured/Employee");
+        modelAndView.setViewName("/secured/employee/employee");
         return modelAndView;
     }
 
     @GetMapping(value = {"/new"})
     public String displayNewEmployeeForm(Model model) {
         model.addAttribute("employee", new Employee(null, null, null, null, new Address()));
-        return "secured/new";
+        return "secured/employee/new";
     }
 
     @PostMapping(value = {"/new"})
@@ -42,10 +42,10 @@ public class EmployeeController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("employee", employee);
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "/secured/new";
+            return "/secured/employee/new";
         }
         employeeService.addEmployee(employee);
-        return "redirect:/employee/list";
+        return "redirect:/crs/secured/employee/list";
     }
 
     @GetMapping(value = {"/edit/{employeeId}"})
@@ -53,9 +53,9 @@ public class EmployeeController {
         var employee = employeeService.getEmployeeById(employeeId);
         if(employee != null) {
             model.addAttribute("employee", employee);
-            return "secured/edit";
+            return "secured/employee/edit";
         }
-        return "redirect:/employee/list";
+        return "redirect:/crs/secured/employee/list";
     }
 
     @PostMapping(value = {"/update"})
@@ -64,16 +64,16 @@ public class EmployeeController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("employee", employee);
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "secured/edit";
+            return "secured/employee/edit";
         }
         employeeService.addEmployee(employee);
-        return "redirect:/employee/list";
+        return "redirect:/crs/secured/employee/list";
     }
 
     @GetMapping(value = {"/delete/{employeeId}"})
     public String deleteEmployee(@PathVariable Long employeeId) {
       employeeService.deleteEmployee(employeeId);
-        return "redirect:/employee/list";
+        return "redirect:/crs/secured/employee/list";
 
     }
 }
