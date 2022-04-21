@@ -14,24 +14,24 @@ public class Order {
 
     private Integer orderNumber;
 
-    private LocalDate startDate;
+    private String startDate;
 
-    private LocalDate returnDate;
+    private String returnDate;
 
     private String orderStatus;
 
     @OneToOne
-    @JoinColumn(name = "vehicle_fk", nullable = false)
+    @JoinColumn(name = "vehicle_fk",nullable = false)
     private Vehicle vehicle;
 
     @OneToOne
-    @JoinColumn(name = "customer_fk", nullable = false)
+    @JoinColumn(name = "customer_fk",nullable = false)
     private Customer customer;
 
     public Order() {
     }
 
-    public Order(Integer orderId, Integer orderNumber, LocalDate startDate, LocalDate returnDate, String orderStatus, Vehicle vehicle, Customer customer) {
+    public Order(Integer orderId, Integer orderNumber, String startDate, String returnDate, String orderStatus, Vehicle vehicle, Customer customer) {
         this.orderId = orderId;
         this.orderNumber = orderNumber;
         this.startDate = startDate;
@@ -57,19 +57,19 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getReturnDate() {
+    public String getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDate returnDate) {
+    public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -95,5 +95,18 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", orderNumber=" + orderNumber +
+                ", startDate=" + startDate +
+                ", returnDate=" + returnDate +
+                ", orderStatus='" + orderStatus + '\'' +
+                ", vehicle=" + vehicle +
+                ", customer=" + customer +
+                '}';
     }
 }

@@ -42,37 +42,53 @@
 
 <body>
 <div class="container">
+    <div class="row" style="margin-top: 20px; margin-bottom: 10px">
 
-    <br>
-    <h3>New Order</h3>
-    <hr/>
+        <form id="orderForm" method="post" action="/crs/secured/order/orderDetail" th:object="${order}">
 
+            <input type="hidden" name="orderId" th:value="${order.orderId}" />
+            <input type="hidden" name="orderStatus" th:value="${order.orderStatus}" />
 
-
-
-    <div class="card-group">
-    <tr th:each="vehicle: ${vehicleList}" th>
-        <div class="row">
-            <div class="col-sm-5" style="margin-right: 10px">
-                <div class="card" style="width: 18rem;">
-                    <img th:src="${vehicle.vehicleImage}" class="card-img-top" alt="vehicleImage">
-                    <div class="card-body">
-                        <h5 class="card-title"><td th:text="${vehicle.brand} + '  '+ ${vehicle.model}"/></h5>
-                        <p class="card-text"><td th:text="${vehicle.vehicleType.vehicleTypeName}"></td></p>
-                        <p class="card-text"><td th:text="${vehicle.vehicleType.numberOfSeats} + ' number of Seats' "></td></p>
-                        <p class="card-text"><td th:text="${vehicle.vehicleType.price}"></td><span>&#36;</span></p>
-
-
-                        <a th:href="@{'/crs/secured/order/choose/{vehicleId}'(vehicleId=${vehicle.vehicleId})}" class="btn btn-primary">Choose</a>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="orderNumber">*Order Number:</label>
+                        <input id="orderNumber" name="orderNumber" type="text" class="form-control"
+                               th:value="${order.orderNumber}" autofocus>
                     </div>
                 </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="startDate">*Reserve Date:</label>
+                        <input id="startDate" name="startDate" type="text" class="form-control"
+                               th:value="${order.startDate}" autofocus>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="returnDate">*Return Date:</label>
+                    <input id="returnDate" name="returnDate" type="text" class="form-control"
+                           th:value="${order.returnDate}"  autofocus>
                 </div>
             </div>
 
-    </tr>
+            <br>
+
+            <div style="padding-top: .75em;">
+                <div>
+                    <div style="float:right;">
+                        <a href="/crs/secured/order/list" class="btn btn-outline-warning" style="margin-right: 2em;">Cancel</a>
+                        <button id="btnSubmit" type="submit" class="btn btn-outline-primary">Next</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
     </div>
-
+    <hr>
 </div>
-
 </body>
 </html>

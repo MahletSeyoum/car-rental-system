@@ -12,4 +12,6 @@ public interface CustomerService {
     public abstract Customer getCustomer(Integer customerId);
 
     public abstract Customer createCustomer(Customer customer);
+
+    public abstract Customer loginCustomer(Customer customer);
 }
