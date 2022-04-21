@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>CRSWebApp - Employee</title>
+    <title>CRSWebApp - Customer</title>
     <style>
 
         table {
@@ -55,42 +55,53 @@
 <div class="container">
     <div class="row" style="margin-top: 20px; margin-bottom: 10px">
         <div class="col-md-8">
-            <h2>List of Employee</h2>
+            <h2>List of Customer</h2>
         </div>
-        <div class="col-md-4">
-            <div style="float:right;">
-                <a href="/crs/secured/employee/new" class="btn btn-outline-primary" style="margin-right: 2em;">Register Employee</a>
-            </div>
-        </div>
+<!--        <div class="col-md-4">-->
+<!--            <div style="float:right;">-->
+<!--                <a href="/crs/secured/employee/new" class="btn btn-outline-primary" style="margin-right: 2em;">Register Employee</a>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
+
+
+
+<!--    this.customerId = customerId;-->
+<!--    this.fullName = fullName;-->
+<!--    this.drivingLicenseNumber = drivingLicenseNumber;-->
+<!--    this.phoneNumber = phoneNumber;-->
+<!--    this.email = email;-->
+<!--    this.address = address;-->
     <hr>
     <table class="table">
         <thead>
         <tr>
             <th>#</th>
             <th> Full Name </th>
+<!--            <th> Driving Licence </th>-->
             <th>Phone Number</th>
             <th>Email Address</th>
             <th>Address</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="employee,counter : ${employee}">
+        <tr th:each="customer,counter : ${customer}">
             <th scope="row" th:text="${counter.count}+${'.'}"></th>
-            <td th:text="${employee.fullName}"></td>
-            <td th:text="${employee.phoneNumber}"></td>
-            <td th:text="${employee.email}"></td>
-            <td th:text="${employee.address}"></td>
+            <td th:text="${customer.fullName}"></td>
+<!--            <td th:text="$customer.drivingLicenseNumber}"></td>-->
+            <td th:text="${customer.phoneNumber}"></td>
+            <td th:text="${customer.email}"></td>
+            <td th:text="${customer.address}"></td>
 
             <td>
             <th>
-                <a th:href="@{'/crs/secured/employee/edit/{employeeId}'(employeeId=${employee.employeeId})}">
+                <a th:href="@{'/crs/secured/customer/edit/{customerId}'(customerId=${customer.customerId})}">
                     <button type="button" class="btn btn-primary">Edit</button>
                 </a>
             </th>
-            <th> <a th:href="@{'/crs/secured/employee/delete/{employeeId}'(employeeId=${employee.employeeId})}">
-                <i class="fa-regular fa-pen-to-square"></i> Delete
-            </a>
+<!--            <th> <a th:href="@{'/crs/secured/employee/delete/{employeeId}'(employeeId=${employee.employeeId})}">-->
+<!--                <i class="fa-regular fa-pen-to-square"></i> Delete-->
+<!--            </a>-->
             </th>
             </td>
 
