@@ -1,9 +1,10 @@
 package edu.mum.crswebapp.service;
 
 import edu.mum.crswebapp.model.Customer;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public interface CustomerService {
 
     public abstract List<Customer> getAllCustomers();
