@@ -31,6 +31,16 @@ public class Order {
     public Order() {
     }
 
+    public Order(Integer orderId, Integer orderNumber, LocalDate startDate, LocalDate returnDate, String orderStatus, Vehicle vehicle, Customer customer) {
+        this.orderId = orderId;
+        this.orderNumber = orderNumber;
+        this.startDate = startDate;
+        this.returnDate = returnDate;
+        this.orderStatus = orderStatus;
+        this.vehicle = vehicle;
+        this.customer = customer;
+    }
+
     public Integer getOrderId() {
         return orderId;
     }
